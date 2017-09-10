@@ -23,8 +23,8 @@ namespace TemplateMethod.Core
             get
             {
                 var sorted = Participants.ToList();
-                sorted.Sort(Compare);
-                return RenderScoreboard(RenderHeader(), sorted.Select(RenderParticipantEntry));
+                sorted.Sort((a, b) => Compare(a, Results[a], b, Results[b]));
+                return RenderScoreboard(RenderHeader(Tasks), sorted.Select(x => RenderParticipantEntry(x, Results[x])));
             }
         }
 
@@ -36,9 +36,9 @@ namespace TemplateMethod.Core
             }
         }
 
-        protected abstract int Compare(Participant p1, Participant p2);
-        protected abstract string RenderHeader();
-        protected abstract string RenderParticipantEntry(Participant p);
+        protected abstract int Compare(Participant p1, Dictionary<Task, Result> r1, Participant p2, Dictionary<Task, Result> r2);
+        protected abstract string RenderHeader(IEnumerable<Task> tasks);
+        protected abstract string RenderParticipantEntry(Participant p, Dictionary<Task, Result> results);
         protected abstract string RenderScoreboard(string header, IEnumerable<string> bodyEntries);
 
         protected abstract string RenderTaskHeader(Task t);

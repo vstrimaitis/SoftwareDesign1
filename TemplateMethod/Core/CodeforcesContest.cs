@@ -18,17 +18,17 @@ namespace TemplateMethod.Core
             : base(participants, tasks, results)
         { }
 
-        protected override int Compare(Participant p1, Participant p2)
+        protected override int Compare(Participant p1, Dictionary<Task, Result> r1, Participant p2, Dictionary<Task, Result> r2)
         {
-            double score1 = Results[p1].Select(x => CalculateTaskScore(x.Key, x.Value)).Sum();
-            double score2 = Results[p2].Select(x => CalculateTaskScore(x.Key, x.Value)).Sum();
+            double score1 = r1.Select(x => CalculateTaskScore(x.Key, x.Value)).Sum();
+            double score2 = r2.Select(x => CalculateTaskScore(x.Key, x.Value)).Sum();
             return Math.Sign(score2 - score1);
         }
 
-        protected override string RenderHeader()
+        protected override string RenderHeader(IEnumerable<Task> tasks)
         {
             string result = "User".PadCenter(UserColumnWidth);
-            foreach (var t in Tasks)
+            foreach (var t in tasks)
             {
                 string tmp = string.Format("{0}({1})", t.Name, t.MaxScore);
                 result += tmp.PadCenter(TaskColumnWidth);
@@ -37,11 +37,11 @@ namespace TemplateMethod.Core
             return result;
         }
 
-        protected override string RenderParticipantEntry(Participant p)
+        protected override string RenderParticipantEntry(Participant p, Dictionary<Task, Result> results)
         {
             string result = p.Username.PadCenter(UserColumnWidth);
             int totalScore = 0;
-            foreach (var r in Results[p])
+            foreach (var r in results)
             {
                 int score = 0;
                 if (r.Value.Solved)

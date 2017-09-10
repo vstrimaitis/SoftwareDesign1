@@ -19,10 +19,10 @@ namespace TemplateMethod.Core
             : base(participants, tasks, results)
         { }
 
-        protected override int Compare(Participant p1, Participant p2)
+        protected override int Compare(Participant p1, Dictionary<Task, Result> r1, Participant p2, Dictionary<Task, Result> r2)
         {
-            IEnumerable<Result> solved1 = Results[p1].Select(x => x.Value).Where(x => x.Solved);
-            IEnumerable<Result> solved2 = Results[p2].Select(x => x.Value).Where(x => x.Solved);
+            IEnumerable<Result> solved1 = r1.Select(x => x.Value).Where(x => x.Solved);
+            IEnumerable<Result> solved2 = r2.Select(x => x.Value).Where(x => x.Solved);
             int solvedCount1 = solved1.Where(x => x.Solved).Count();
             int solvedCount2 = solved2.Where(x => x.Solved).Count();
             if(solvedCount1 != solvedCount2)
@@ -36,22 +36,22 @@ namespace TemplateMethod.Core
             return penaltyTime1 - penaltyTime2;
         }
 
-        protected override string RenderHeader()
+        protected override string RenderHeader(IEnumerable<Task> tasks)
         {
-            string tasks = "";
-            foreach(var t in Tasks)
+            string renderedTasks = "";
+            foreach(var t in tasks)
             {
-                tasks += t.Name.PadCenter(TaskColumnWidth);
+                renderedTasks += t.Name.PadCenter(TaskColumnWidth);
             }
 
             return string.Format("{0}{1}{2}{3}",
-                                "User".PadCenter(UserColumnWidth), tasks, "Sum".PadCenter(SumColumnWidth), "Penalty".PadCenter(PenaltyColumnWidth));
+                                "User".PadCenter(UserColumnWidth), renderedTasks, "Sum".PadCenter(SumColumnWidth), "Penalty".PadCenter(PenaltyColumnWidth));
         }
 
-        protected override string RenderParticipantEntry(Participant p)
+        protected override string RenderParticipantEntry(Participant p, Dictionary<Task, Result> results)
         {
             string result = p.Username.PadCenter(UserColumnWidth);
-            foreach (var r in Results[p].Values)
+            foreach (var r in results.Values)
             {
                 string tries = "-";
                 string tmpResult;
@@ -70,8 +70,8 @@ namespace TemplateMethod.Core
             }
             
             result += string.Format("{0}{1}",
-                                Results[p].Values.Where(x => x.Solved).Count().ToString().PadCenter(SumColumnWidth),
-                                Results[p].Values.Select(x => x.Time + x.WrongSubmissionCount*TimePenaltyPerSubmission).Sum().ToString().PadCenter(PenaltyColumnWidth));
+                                results.Values.Where(x => x.Solved).Count().ToString().PadCenter(SumColumnWidth),
+                                results.Values.Select(x => x.Time + x.WrongSubmissionCount*TimePenaltyPerSubmission).Sum().ToString().PadCenter(PenaltyColumnWidth));
 
             return result;
         }
