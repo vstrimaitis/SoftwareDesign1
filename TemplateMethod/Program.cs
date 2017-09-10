@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TemplateMethod.Core;
@@ -71,34 +72,7 @@ namespace TemplateMethod
             Console.WriteLine("");
             Console.WriteLine("Codeforces contest scoreboard: ");
             Console.WriteLine(cfContest.Scoreboard);
-
-            // ====================================================================================================================
-
-            List<Participant> participants = new List<Participant>()
-            {
-                new Participant("Chad"),
-                new Participant("Alice"),
-                new Participant("Donovan"),
-                new Participant("Fishy"),
-                new Participant("Bob"),
-                new Participant("Greg"),
-                new Participant("Elmo"),
-            };
-            ParticipantList alphabeticList = new AlphabeticParticipantList();
-            ParticipantList lengthBasedList = new UsernameLengthBasedParticipantList();
-
-            Console.WriteLine("Alphabetic ordering:");
-            foreach(var p in alphabeticList.ReorderParticipants(participants))
-            {
-                Console.WriteLine(p.Username);
-            }
-
-            Console.WriteLine("Username length-based ordering:");
-            foreach(var p in lengthBasedList.ReorderParticipants(participants))
-            {
-                Console.WriteLine(p.Username);
-            }
-
+            
             //======================================================================================================================
             string allIcpcTasks = string.Join("\n------------------------------\n", icpcContest.RenderedTasks);
             string allCfTasks = string.Join("\n------------------------------\n", cfContest.RenderedTasks);

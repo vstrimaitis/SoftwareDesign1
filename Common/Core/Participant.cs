@@ -1,4 +1,4 @@
-﻿namespace Strategy.Core
+﻿namespace Common.Core
 {
     public struct Participant
     {

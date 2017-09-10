@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{83E70A33-D795-4C23-80B5-7849D3834215}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>TemplateMethod</RootNamespace>
-    <AssemblyName>TemplateMethod</AssemblyName>
+    <ProjectGuid>{05608E7A-D88C-4A8F-8227-792E717F4C51}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Common</RootNamespace>
+    <AssemblyName>Common</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -42,23 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\CodeforcesContest.cs" />
-    <Compile Include="Core\Contest.cs" />
-    <Compile Include="Core\IcpcContest.cs" />
-    <Compile Include="Core\ReqA\HtmlTaskEditor.cs" />
-    <Compile Include="Core\ReqA\MarkdownTaskEditor.cs" />
-    <Compile Include="Core\ReqA\TaskEditor.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Core\Participant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Core\Result.cs" />
+    <Compile Include="Core\Task.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{05608e7a-d88c-4a8f-8227-792e717f4c51}</Project>
-      <Name>Common</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

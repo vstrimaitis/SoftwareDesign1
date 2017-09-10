@@ -1,4 +1,4 @@
-﻿namespace Strategy.Extensions
+﻿namespace Common.Extensions
 {
     public static class StringExtensions
     {

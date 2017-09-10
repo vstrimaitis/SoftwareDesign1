@@ -1,4 +1,4 @@
-﻿namespace TemplateMethod.Core
+﻿namespace Common.Core
 {
     public struct Task
     {

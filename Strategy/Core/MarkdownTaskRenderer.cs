@@ -1,4 +1,6 @@
-﻿namespace Strategy.Core
+﻿using Common.Core;
+
+namespace Strategy.Core
 {
     public class MarkdownTaskRenderer : ITaskRenderer
     {

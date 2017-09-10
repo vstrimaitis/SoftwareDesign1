@@ -1,4 +1,6 @@
-﻿namespace TemplateMethod.Core.ReqA
+﻿using Common.Core;
+
+namespace TemplateMethod.Core.ReqA
 {
     public class MarkdownTaskEditor : TaskEditor
     {

@@ -1,4 +1,5 @@
-﻿using Strategy.Core;
+﻿using Common.Core;
+using Strategy.Core;
 using Strategy.Core.ReqA;
 using System;
 using System.Collections.Generic;

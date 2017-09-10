@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Common.Core;
+using System.Collections.Generic;
 
 namespace Strategy.Core
 {

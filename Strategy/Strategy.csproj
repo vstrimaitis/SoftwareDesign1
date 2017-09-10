@@ -49,16 +49,18 @@
     <Compile Include="Core\IScoreboardGenerator.cs" />
     <Compile Include="Core\ITaskRenderer.cs" />
     <Compile Include="Core\MarkdownTaskRenderer.cs" />
-    <Compile Include="Core\Participant.cs" />
     <Compile Include="Core\ReqA\TaskEditor.cs" />
-    <Compile Include="Core\Result.cs" />
-    <Compile Include="Core\Task.cs" />
-    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{05608e7a-d88c-4a8f-8227-792e717f4c51}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Common.Core;
+using Common.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using TemplateMethod.Extensions;
 
 namespace TemplateMethod.Core
 {

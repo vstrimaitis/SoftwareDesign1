@@ -1,4 +1,6 @@
-﻿namespace Strategy.Core.ReqA
+﻿using Common.Core;
+
+namespace Strategy.Core.ReqA
 {
     public class TaskEditor
     {
