@@ -1,7 +1,6 @@
 ﻿using Common;
 using Common.Core;
 using System;
-using System.Linq;
 using TemplateMethod.Core;
 using TemplateMethod.Core.ReqA;
 
@@ -13,28 +12,34 @@ namespace TemplateMethod
 
         static void Main(string[] args)
         {
+            TestHelper.PrintTestSuiteHeader(" Template method tests ", '>', '<');
+
+            TestHelper.PrintTestHeader("Scoreboard test");
             TestHelper.RunIcpcScoreboardTest((p, t, r) => new IcpcContest(p, t, r).Scoreboard);
-            TestHelper.PrintSeparator();
+            TestHelper.PrintSubtestSeparator();
             TestHelper.RunCodeforcesScoreboardTest((p, t, r) => new CodeforcesContest(p, t, r).Scoreboard);
             //======================================================================================================================
+            TestHelper.PrintTestHeader("Contest task rendering test");
             TestHelper.RunIcpcTaskRenderingTest((p, t, r) => new IcpcContest(p, t, r).RenderedTasks);
-            TestHelper.PrintSeparator();
+            TestHelper.PrintSubtestSeparator();
             TestHelper.RunCodeforcesTaskRenderingTest((p, t, r) => new CodeforcesContest(p, t, r).RenderedTasks);
-            TestHelper.PrintSeparator();
             //======================================================================================================================
+            TestHelper.PrintTestHeader("Task editor test");
             Task oldTask = new Task("Old task", "This is the old, unedited task", 1500);
             Task newTask = new Task("New task", "This is the new and shiny task.", 2000);
             TaskEditor htmlEditor = new HtmlTaskEditor(oldTask);
-            TaskEditor markdownEditor = new MarkdownTaskEditor(newTask);
+            TaskEditor markdownEditor = new MarkdownTaskEditor(oldTask);
             Console.WriteLine("HTML before:");
             Console.WriteLine(htmlEditor.RenderedTask);
             htmlEditor.EditTask(newTask);
+            Console.WriteLine();
             Console.WriteLine("HTML after:");
             Console.WriteLine(htmlEditor.RenderedTask);
-            Console.WriteLine();
+            TestHelper.PrintSubtestSeparator();
             Console.WriteLine("Markdown before:");
             Console.WriteLine(markdownEditor.RenderedTask);
             markdownEditor.EditTask(newTask);
+            Console.WriteLine();
             Console.WriteLine("Markdown after:");
             Console.WriteLine(markdownEditor.RenderedTask);
         }

@@ -1,4 +1,5 @@
 ﻿using Common.Core;
+using Common.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -110,10 +111,30 @@ namespace Common
             Console.WriteLine(tasks);
         }
 
-        public static void PrintSeparator()
+        public static void PrintTestSuiteHeader(string title, char leftPaddingChar = ' ', char rightPaddingChar = ' ')
+        {
+            int w = Console.WindowWidth - 1;
+            Console.WriteLine("");
+            Console.WriteLine(new string('=', w));
+            Console.WriteLine(title.ToUpper().PadCenter(w, leftPaddingChar, rightPaddingChar));
+            Console.WriteLine(new string('=', w));
+            Console.WriteLine("");
+        }
+
+        public static void PrintSubtestSeparator()
         {
             Console.WriteLine("");
-            Console.WriteLine(new string('*', Console.WindowWidth - 1));
+            Console.WriteLine(new string('-', Console.WindowWidth - 1));
+            Console.WriteLine("");
+        }
+
+        public static void PrintTestHeader(string title)
+        {
+            int w = Console.WindowWidth - 1;
+            Console.WriteLine("");
+            Console.WriteLine(new string('=', w));
+            Console.WriteLine(title.PadCenter(w));
+            Console.WriteLine(new string('=', w));
             Console.WriteLine("");
         }
 
