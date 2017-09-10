@@ -46,12 +46,9 @@
     <Compile Include="Core\Contest.cs" />
     <Compile Include="Core\IcpcContest.cs" />
     <Compile Include="Core\Participant.cs" />
-    <Compile Include="Core\ReqA\AlphabeticParticipantList.cs" />
     <Compile Include="Core\ReqA\HtmlTaskEditor.cs" />
     <Compile Include="Core\ReqA\MarkdownTaskEditor.cs" />
-    <Compile Include="Core\ReqA\ParticipantList.cs" />
     <Compile Include="Core\ReqA\TaskEditor.cs" />
-    <Compile Include="Core\ReqA\UsernameLengthBasedParticipantList.cs" />
     <Compile Include="Core\Result.cs" />
     <Compile Include="Core\Task.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
