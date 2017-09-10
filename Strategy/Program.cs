@@ -1,4 +1,5 @@
 ﻿using Strategy.Core;
+using Strategy.Core.ReqA;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -87,10 +88,13 @@ namespace Strategy
             Console.WriteLine(allCfTasks);
 
             //======================================================================================================================
-            /*Task oldTask = new Task("Old task", "This is the old, unedited task", 1500);
+            Console.WriteLine("");
+            Console.WriteLine(new string('*', Console.WindowWidth - 1));
+            Console.WriteLine("");
+            Task oldTask = new Task("Old task", "This is the old, unedited task", 1500);
             Task newTask = new Task("New task", "This is the new and shiny task.", 2000);
-            TaskEditor htmlEditor = new HtmlTaskEditor(oldTask);
-            TaskEditor markdownEditor = new MarkdownTaskEditor(newTask);
+            TaskEditor htmlEditor = new TaskEditor(htmlTaskRenderer, oldTask);
+            TaskEditor markdownEditor = new TaskEditor(markdownTaskRenderer, newTask);
             Console.WriteLine("HTML before:");
             Console.WriteLine(htmlEditor.RenderedTask);
             htmlEditor.EditTask(newTask);
@@ -101,7 +105,7 @@ namespace Strategy
             Console.WriteLine(markdownEditor.RenderedTask);
             markdownEditor.EditTask(newTask);
             Console.WriteLine("Markdown after:");
-            Console.WriteLine(markdownEditor.RenderedTask);*/
+            Console.WriteLine(markdownEditor.RenderedTask);
         }
 
         static Result GenerateResult(Task task)

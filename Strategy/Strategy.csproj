@@ -50,6 +50,7 @@
     <Compile Include="Core\ITaskRenderer.cs" />
     <Compile Include="Core\MarkdownTaskRenderer.cs" />
     <Compile Include="Core\Participant.cs" />
+    <Compile Include="Core\ReqA\TaskEditor.cs" />
     <Compile Include="Core\Result.cs" />
     <Compile Include="Core\Task.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
