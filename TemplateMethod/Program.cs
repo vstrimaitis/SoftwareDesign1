@@ -14,34 +14,14 @@ namespace TemplateMethod
 
         static void Main(string[] args)
         {
-            List<Task> icpcTasks = TestHelper.IcpcTasks.ToList();
-            List<Participant> icpcParticipants = TestHelper.Participants.ToList();
-            List<Task> cfTasks = TestHelper.CodeforcesTasks.ToList();
-            List<Participant> cfParticipants = TestHelper.Participants.ToList();
-            var icpcResults = TestHelper.IcpcResults;
-            var cfResults = TestHelper.CodeforcesResults;
-
-            Contest icpcContest = new IcpcContest(icpcParticipants, icpcTasks, icpcResults);
-            Contest cfContest = new CodeforcesContest(cfParticipants, cfTasks, cfResults);
-            
-            Console.WriteLine("ICPC contest scoreboard: ");
-            Console.WriteLine(icpcContest.Scoreboard);
-            Console.WriteLine("");
-            Console.WriteLine(new string('*', Console.WindowWidth - 1));
-            Console.WriteLine("");
-            Console.WriteLine("Codeforces contest scoreboard: ");
-            Console.WriteLine(cfContest.Scoreboard);
-            
+            TestHelper.RunIcpcScoreboardTest((p, t, r) => new IcpcContest(p.ToList(), t.ToList(), r).Scoreboard);
+            TestHelper.PrintSeparator();
+            TestHelper.RunCodeforcesScoreboardTest((p, t, r) => new CodeforcesContest(p.ToList(), t.ToList(), r).Scoreboard);
             //======================================================================================================================
-            string allIcpcTasks = string.Join("\n------------------------------\n", icpcContest.RenderedTasks);
-            string allCfTasks = string.Join("\n------------------------------\n", cfContest.RenderedTasks);
-
-            Console.WriteLine(allIcpcTasks);
-            Console.WriteLine("");
-            Console.WriteLine(new string('*', Console.WindowWidth - 1));
-            Console.WriteLine("");
-            Console.WriteLine(allCfTasks);
-
+            TestHelper.RunIcpcTaskRenderingTest((p, t, r) => new IcpcContest(p.ToList(), t.ToList(), r).RenderedTasks);
+            TestHelper.PrintSeparator();
+            TestHelper.RunCodeforcesTaskRenderingTest((p, t, r) => new CodeforcesContest(p.ToList(), t.ToList(), r).RenderedTasks);
+            TestHelper.PrintSeparator();
             //======================================================================================================================
             Task oldTask = new Task("Old task", "This is the old, unedited task", 1500);
             Task newTask = new Task("New task", "This is the new and shiny task.", 2000);
@@ -58,14 +38,6 @@ namespace TemplateMethod
             markdownEditor.EditTask(newTask);
             Console.WriteLine("Markdown after:");
             Console.WriteLine(markdownEditor.RenderedTask);
-        }
-
-        static Result GenerateResult(Task task)
-        {
-            bool isSolved = random.Next(2) == 1;
-            int time = random.Next(121);
-            int wrongSubmissionCount = random.Next(20);
-            return new Result(isSolved, time, wrongSubmissionCount);
         }
     }
 }

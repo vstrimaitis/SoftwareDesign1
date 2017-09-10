@@ -65,12 +65,12 @@ namespace TemplateMethod.Core
 
         protected override string RenderTaskBody(Task t)
         {
-            return t.Description;
+            return $"<p>Maximum score: <b>{t.MaxScore}</b></p>\n<p>{t.Description}</p>";
         }
 
         protected override string RenderTaskHeader(Task t)
         {
-            return $"Task name: {t.Name} ({t.MaxScore} pts.)";
+            return $"<h1>{t.Name}</h1>";
         }
 
         private double CalculateTaskScore(Task task, Result result)

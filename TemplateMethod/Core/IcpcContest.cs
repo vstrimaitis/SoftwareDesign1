@@ -86,12 +86,12 @@ namespace TemplateMethod.Core
 
         protected override string RenderTaskBody(Task t)
         {
-            return $"{t.Description.Replace(' ', '_')}";
+            return $"> Maximum score: {t.MaxScore} points\n> {t.Description}";
         }
 
         protected override string RenderTaskHeader(Task t)
         {
-            return $"Task name: \"{t.Name}\"";
+            return $"# {t.Name}";
         }
     }
 }

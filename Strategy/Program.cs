@@ -14,43 +14,22 @@ namespace Strategy
 
         static void Main(string[] args)
         {
-            List<Task> icpcTasks = TestHelper.IcpcTasks.ToList();
-            List<Participant> icpcParticipants = TestHelper.Participants.ToList();
-            List<Task> cfTasks = TestHelper.CodeforcesTasks.ToList();
-            List<Participant> cfParticipants = TestHelper.Participants.ToList();
-            var icpcResults = TestHelper.IcpcResults;
-            var cfResults = TestHelper.CodeforcesResults;
-
             IScoreboardGenerator icpcScoreboardGenerator = new IcpcScoreboardGenerator();
             IScoreboardGenerator cfScoreboardGenerator = new CodeforcesScoreboardGenerator();
             ITaskRenderer htmlTaskRenderer = new HtmlTaskRenderer();
             ITaskRenderer markdownTaskRenderer = new MarkdownTaskRenderer();
 
-            Contest icpcContest = new Contest(icpcScoreboardGenerator, markdownTaskRenderer,icpcParticipants, icpcTasks, icpcResults);
-            Contest cfContest = new Contest(cfScoreboardGenerator, htmlTaskRenderer, cfParticipants, cfTasks, cfResults);
-
-            Console.WriteLine("ICPC contest scoreboard: ");
-            Console.WriteLine(icpcContest.Scoreboard);
-            Console.WriteLine("");
-            Console.WriteLine(new string('*', Console.WindowWidth - 1));
-            Console.WriteLine("");
-            Console.WriteLine("Codeforces contest scoreboard: ");
-            Console.WriteLine(cfContest.Scoreboard);
+            TestHelper.RunIcpcScoreboardTest((p, t, r) => CreateIcpcContest(p, t, r).Scoreboard);
+            TestHelper.PrintSeparator();
+            TestHelper.RunCodeforcesScoreboardTest((p, t, r) => CreateCodeforcesContest(p, t, r).Scoreboard);
 
             //======================================================================================================================
-            string allIcpcTasks = string.Join("\n------------------------------\n", icpcContest.RenderedTasks);
-            string allCfTasks = string.Join("\n------------------------------\n", cfContest.RenderedTasks);
-
-            Console.WriteLine(allIcpcTasks);
-            Console.WriteLine("");
-            Console.WriteLine(new string('*', Console.WindowWidth - 1));
-            Console.WriteLine("");
-            Console.WriteLine(allCfTasks);
+            TestHelper.RunIcpcTaskRenderingTest((p, t, r) => CreateIcpcContest(p, t, r).RenderedTasks);
+            TestHelper.PrintSeparator();
+            TestHelper.RunCodeforcesTaskRenderingTest((p, t, r) => CreateCodeforcesContest(p, t, r).RenderedTasks);
+            TestHelper.PrintSeparator();
 
             //======================================================================================================================
-            Console.WriteLine("");
-            Console.WriteLine(new string('*', Console.WindowWidth - 1));
-            Console.WriteLine("");
             Task oldTask = new Task("Old task", "This is the old, unedited task", 1500);
             Task newTask = new Task("New task", "This is the new and shiny task.", 2000);
             TaskEditor htmlEditor = new TaskEditor(htmlTaskRenderer, oldTask);
@@ -66,6 +45,20 @@ namespace Strategy
             markdownEditor.EditTask(newTask);
             Console.WriteLine("Markdown after:");
             Console.WriteLine(markdownEditor.RenderedTask);
+        }
+
+        private static Contest CreateIcpcContest(IEnumerable<Participant> p, IEnumerable<Task> t, Dictionary<Participant, Dictionary<Task, Result>> r)
+        {
+            IScoreboardGenerator icpcScoreboardGenerator = new IcpcScoreboardGenerator();
+            ITaskRenderer markdownTaskRenderer = new MarkdownTaskRenderer();
+            return new Contest(icpcScoreboardGenerator, markdownTaskRenderer, p.ToList(), t.ToList(), r);
+        }
+
+        private static Contest CreateCodeforcesContest(IEnumerable<Participant> p, IEnumerable<Task> t, Dictionary<Participant, Dictionary<Task, Result>> r)
+        {
+            IScoreboardGenerator cfScoreboardGenerator = new CodeforcesScoreboardGenerator();
+            ITaskRenderer htmlTaskRenderer = new HtmlTaskRenderer();
+            return new Contest(cfScoreboardGenerator, htmlTaskRenderer, p.ToList(), t.ToList(), r);
         }
     }
 }

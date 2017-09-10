@@ -70,6 +70,53 @@ namespace Common
             }
         }
 
+        public static void RunIcpcScoreboardTest(Func<IEnumerable<Participant>,
+                                                        IEnumerable<Task>,
+                                                        Dictionary<Participant, Dictionary<Task, Result>>,
+                                                        string
+                                                     > scoreboardGenerator)
+        {
+            Console.WriteLine("ICPC contest scoreboard:");
+            Console.WriteLine(scoreboardGenerator(Participants, IcpcTasks, IcpcResults));
+        }
+
+        public static void RunCodeforcesScoreboardTest(Func<IEnumerable<Participant>,
+                                                            IEnumerable<Task>,
+                                                            Dictionary<Participant, Dictionary<Task, Result>>,
+                                                            string
+                                                         > scoreboardGenerator)
+        {
+            Console.WriteLine("Codeforces contest scoreboard:");
+            Console.WriteLine(scoreboardGenerator(Participants, CodeforcesTasks, CodeforcesResults));
+        }
+
+        public static void RunIcpcTaskRenderingTest(Func<IEnumerable<Participant>,
+                                                            IEnumerable<Task>,
+                                                            Dictionary<Participant, Dictionary<Task, Result>>,
+                                                            IEnumerable<string>
+                                                         > taskGenerator)
+        {
+            string tasks = string.Join("\n------------------------------\n", taskGenerator(Participants, IcpcTasks, IcpcResults));
+            Console.WriteLine(tasks);
+        }
+
+        public static void RunCodeforcesTaskRenderingTest(Func< IEnumerable<Participant>,
+                                                                IEnumerable<Task>,
+                                                                Dictionary<Participant, Dictionary<Task, Result>>,
+                                                                IEnumerable<string>
+                                                             > taskGenerator)
+        {
+            string tasks = string.Join("\n------------------------------\n", taskGenerator(Participants, CodeforcesTasks, CodeforcesResults));
+            Console.WriteLine(tasks);
+        }
+
+        public static void PrintSeparator()
+        {
+            Console.WriteLine("");
+            Console.WriteLine(new string('*', Console.WindowWidth - 1));
+            Console.WriteLine("");
+        }
+
         static Result GenerateResult(Task task)
         {
             bool isSolved = random.Next(2) == 1;
