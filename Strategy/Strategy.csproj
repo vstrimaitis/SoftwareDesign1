@@ -44,9 +44,11 @@
   <ItemGroup>
     <Compile Include="Core\CodeforcesScoreboardGenerator.cs" />
     <Compile Include="Core\Contest.cs" />
+    <Compile Include="Core\HtmlTaskRenderer.cs" />
     <Compile Include="Core\IcpcScoreboardGenerator.cs" />
     <Compile Include="Core\IScoreboardGenerator.cs" />
     <Compile Include="Core\ITaskRenderer.cs" />
+    <Compile Include="Core\MarkdownTaskRenderer.cs" />
     <Compile Include="Core\Participant.cs" />
     <Compile Include="Core\Result.cs" />
     <Compile Include="Core\Task.cs" />
