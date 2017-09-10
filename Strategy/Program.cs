@@ -1,4 +1,5 @@
-﻿using Common.Core;
+﻿using Common;
+using Common.Core;
 using Strategy.Core;
 using Strategy.Core.ReqA;
 using System;
@@ -13,59 +14,17 @@ namespace Strategy
 
         static void Main(string[] args)
         {
-            List<Task> icpcTasks = new List<Task>()
-            {
-                new Task("A", "Description A", 1),
-                new Task("B", "Description B", 1),
-                new Task("C", "Description C", 1),
-                new Task("D", "Description D", 1),
-                new Task("E", "Description E", 1),
-            };
-
-            List<Participant> icpcParticipants = new List<Participant>()
-            {
-                new Participant("user1" ),
-                new Participant("user2" ),
-                new Participant("user3" ),
-                new Participant("user4" ),
-                new Participant("user5" ),
-                new Participant("user6" ),
-                new Participant("user7" ),
-                new Participant("user8" ),
-                new Participant("user9" ),
-                new Participant("user10"),
-            };
-
-            List<Task> cfTasks = new List<Task>()
-            {
-                new Task("A", "Description A", 500),
-                new Task("B", "Description B", 1000),
-                new Task("C", "Description C", 1500),
-                new Task("D", "Description D", 2000),
-                new Task("E", "Description E", 2500),
-            };
-
-            List<Participant> cfParticipants = new List<Participant>()
-            {
-                new Participant("user1" ),
-                new Participant("user2" ),
-                new Participant("user3" ),
-                new Participant("user4" ),
-                new Participant("user5" ),
-                new Participant("user6" ),
-                new Participant("user7" ),
-                new Participant("user8" ),
-                new Participant("user9" ),
-                new Participant("user10"),
-            };
+            List<Task> icpcTasks = TestHelper.IcpcTasks.ToList();
+            List<Participant> icpcParticipants = TestHelper.Participants.ToList();
+            List<Task> cfTasks = TestHelper.CodeforcesTasks.ToList();
+            List<Participant> cfParticipants = TestHelper.Participants.ToList();
+            var icpcResults = TestHelper.IcpcResults;
+            var cfResults = TestHelper.CodeforcesResults;
 
             IScoreboardGenerator icpcScoreboardGenerator = new IcpcScoreboardGenerator();
             IScoreboardGenerator cfScoreboardGenerator = new CodeforcesScoreboardGenerator();
             ITaskRenderer htmlTaskRenderer = new HtmlTaskRenderer();
             ITaskRenderer markdownTaskRenderer = new MarkdownTaskRenderer();
-
-            var icpcResults = icpcParticipants.ToDictionary(p => p, p => icpcTasks.ToDictionary(t => t, t => GenerateResult(t)));
-            var cfResults = cfParticipants.ToDictionary(p => p, p => cfTasks.ToDictionary(t => t, t => GenerateResult(t)));
 
             Contest icpcContest = new Contest(icpcScoreboardGenerator, markdownTaskRenderer,icpcParticipants, icpcTasks, icpcResults);
             Contest cfContest = new Contest(cfScoreboardGenerator, htmlTaskRenderer, cfParticipants, cfTasks, cfResults);
@@ -107,14 +66,6 @@ namespace Strategy
             markdownEditor.EditTask(newTask);
             Console.WriteLine("Markdown after:");
             Console.WriteLine(markdownEditor.RenderedTask);
-        }
-
-        static Result GenerateResult(Task task)
-        {
-            bool isSolved = random.Next(2) == 1;
-            int time = random.Next(121);
-            int wrongSubmissionCount = random.Next(20);
-            return new Result(isSolved, time, wrongSubmissionCount);
         }
     }
 }
