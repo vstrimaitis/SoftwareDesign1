@@ -1,6 +1,6 @@
 ﻿namespace Strategy.Core
 {
-    struct Participant
+    public struct Participant
     {
         public string Username { get; private set; }
 

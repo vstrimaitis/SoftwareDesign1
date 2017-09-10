@@ -1,6 +1,6 @@
 ﻿namespace TemplateMethod.Core.ReqA
 {
-    class MarkdownTaskEditor : TaskEditor
+    public class MarkdownTaskEditor : TaskEditor
     {
         public MarkdownTaskEditor(Task task) : base(task)
         { }

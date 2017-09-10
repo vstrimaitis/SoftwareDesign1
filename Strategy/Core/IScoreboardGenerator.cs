@@ -2,7 +2,7 @@
 
 namespace Strategy.Core
 {
-    interface IScoreboardGenerator
+    public interface IScoreboardGenerator
     {
         int Compare(Participant p1, Dictionary<Task, Result> r1, Participant p2, Dictionary<Task, Result> r2);
         string RenderHeader(IEnumerable<Task> tasks);

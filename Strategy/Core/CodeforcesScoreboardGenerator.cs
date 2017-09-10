@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Strategy.Core
 {
-    class CodeforcesScoreboardGenerator : IScoreboardGenerator
+    public class CodeforcesScoreboardGenerator : IScoreboardGenerator
     {
         private const int ScorePenaltyPerWrongSubmission = 50;
         private const int UserColumnWidth = 8;

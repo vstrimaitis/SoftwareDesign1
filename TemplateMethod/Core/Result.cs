@@ -1,6 +1,6 @@
 ﻿namespace TemplateMethod.Core
 {
-    struct Result
+    public struct Result
     {
         public bool Solved { get; private set; }
         public int Time { get; private set; }

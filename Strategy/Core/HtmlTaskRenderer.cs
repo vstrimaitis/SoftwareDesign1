@@ -1,6 +1,6 @@
 ﻿namespace Strategy.Core
 {
-    class HtmlTaskRenderer : ITaskRenderer
+    public class HtmlTaskRenderer : ITaskRenderer
     {
         public string RenderTaskBody(Task t)
         {

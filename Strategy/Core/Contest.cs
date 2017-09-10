@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Strategy.Core
 {
-    class Contest
+    public class Contest
     {
         public List<Participant> Participants { get; private set; }
         public List<Task> Tasks { get; private set; }

@@ -5,7 +5,7 @@ using TemplateMethod.Extensions;
 
 namespace TemplateMethod.Core
 {
-    class CodeforcesContest : Contest
+    public class CodeforcesContest : Contest
     {
         private const int ScorePenaltyPerWrongSubmission = 50;
         private const int UserColumnWidth = 8;

@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Strategy.Core
 {
-    class IcpcScoreboardGenerator : IScoreboardGenerator
+    public class IcpcScoreboardGenerator : IScoreboardGenerator
     {
         private const int TimePenaltyPerSubmission = 20; // Number of minutes of penalty per wrong submission
         private const int UserColumnWidth = 8;

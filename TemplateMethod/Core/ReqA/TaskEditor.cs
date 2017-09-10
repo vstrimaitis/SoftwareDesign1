@@ -1,6 +1,6 @@
 ﻿namespace TemplateMethod.Core.ReqA
 {
-    abstract class TaskEditor
+    public abstract class TaskEditor
     {
         private Task _task;
 

@@ -1,6 +1,6 @@
 ﻿namespace Strategy.Extensions
 {
-    static class StringExtensions
+    public static class StringExtensions
     {
         public static string PadCenter(this string str, int length)
         {

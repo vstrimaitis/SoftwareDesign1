@@ -1,6 +1,6 @@
 ﻿namespace Strategy.Core.ReqA
 {
-    class TaskEditor
+    public class TaskEditor
     {
         private Task _task;
         private ITaskRenderer _renderer;

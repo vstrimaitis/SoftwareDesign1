@@ -1,6 +1,6 @@
 ﻿namespace Strategy.Core
 {
-    class MarkdownTaskRenderer : ITaskRenderer
+    public class MarkdownTaskRenderer : ITaskRenderer
     {
         public string RenderTaskBody(Task t)
         {

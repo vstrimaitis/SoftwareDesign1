@@ -1,6 +1,6 @@
 ﻿namespace Strategy.Core
 {
-    interface ITaskRenderer
+    public interface ITaskRenderer
     {
         string RenderTaskHeader(Task t);
         string RenderTaskBody(Task t);

@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace TemplateMethod.Core
 {
-    abstract class Contest
+    public abstract class Contest
     {
         public List<Participant> Participants { get; private set; }
         public List<Task> Tasks { get; private set; }
