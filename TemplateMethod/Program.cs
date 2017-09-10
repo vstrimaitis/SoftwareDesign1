@@ -1,7 +1,6 @@
 ﻿using Common;
 using Common.Core;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using TemplateMethod.Core;
 using TemplateMethod.Core.ReqA;
@@ -14,13 +13,13 @@ namespace TemplateMethod
 
         static void Main(string[] args)
         {
-            TestHelper.RunIcpcScoreboardTest((p, t, r) => new IcpcContest(p.ToList(), t.ToList(), r).Scoreboard);
+            TestHelper.RunIcpcScoreboardTest((p, t, r) => new IcpcContest(p, t, r).Scoreboard);
             TestHelper.PrintSeparator();
-            TestHelper.RunCodeforcesScoreboardTest((p, t, r) => new CodeforcesContest(p.ToList(), t.ToList(), r).Scoreboard);
+            TestHelper.RunCodeforcesScoreboardTest((p, t, r) => new CodeforcesContest(p, t, r).Scoreboard);
             //======================================================================================================================
-            TestHelper.RunIcpcTaskRenderingTest((p, t, r) => new IcpcContest(p.ToList(), t.ToList(), r).RenderedTasks);
+            TestHelper.RunIcpcTaskRenderingTest((p, t, r) => new IcpcContest(p, t, r).RenderedTasks);
             TestHelper.PrintSeparator();
-            TestHelper.RunCodeforcesTaskRenderingTest((p, t, r) => new CodeforcesContest(p.ToList(), t.ToList(), r).RenderedTasks);
+            TestHelper.RunCodeforcesTaskRenderingTest((p, t, r) => new CodeforcesContest(p, t, r).RenderedTasks);
             TestHelper.PrintSeparator();
             //======================================================================================================================
             Task oldTask = new Task("Old task", "This is the old, unedited task", 1500);

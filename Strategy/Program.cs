@@ -51,14 +51,14 @@ namespace Strategy
         {
             IScoreboardGenerator icpcScoreboardGenerator = new IcpcScoreboardGenerator();
             ITaskRenderer markdownTaskRenderer = new MarkdownTaskRenderer();
-            return new Contest(icpcScoreboardGenerator, markdownTaskRenderer, p.ToList(), t.ToList(), r);
+            return new Contest(icpcScoreboardGenerator, markdownTaskRenderer, p, t, r);
         }
 
         private static Contest CreateCodeforcesContest(IEnumerable<Participant> p, IEnumerable<Task> t, Dictionary<Participant, Dictionary<Task, Result>> r)
         {
             IScoreboardGenerator cfScoreboardGenerator = new CodeforcesScoreboardGenerator();
             ITaskRenderer htmlTaskRenderer = new HtmlTaskRenderer();
-            return new Contest(cfScoreboardGenerator, htmlTaskRenderer, p.ToList(), t.ToList(), r);
+            return new Contest(cfScoreboardGenerator, htmlTaskRenderer, p, t, r);
         }
     }
 }

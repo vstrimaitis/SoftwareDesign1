@@ -6,8 +6,8 @@ namespace Strategy.Core
 {
     public class Contest
     {
-        public List<Participant> Participants { get; private set; }
-        public List<Task> Tasks { get; private set; }
+        public IEnumerable<Participant> Participants { get; private set; }
+        public IEnumerable<Task> Tasks { get; private set; }
         public Dictionary<Participant, Dictionary<Task, Result>> Results;
 
         private IScoreboardGenerator _scoreboardGenerator;
@@ -15,8 +15,8 @@ namespace Strategy.Core
         
         public Contest(IScoreboardGenerator scoreboardGenerator,
                        ITaskRenderer taskRenderer,
-                       List<Participant> participants,
-                       List<Task> tasks,
+                       IEnumerable<Participant> participants,
+                       IEnumerable<Task> tasks,
                        Dictionary<Participant, Dictionary<Task, Result>> results)
         {
             _scoreboardGenerator = scoreboardGenerator;

@@ -6,12 +6,12 @@ namespace TemplateMethod.Core
 {
     public abstract class Contest
     {
-        public List<Participant> Participants { get; private set; }
-        public List<Task> Tasks { get; private set; }
+        public IEnumerable<Participant> Participants { get; private set; }
+        public IEnumerable<Task> Tasks { get; private set; }
         public Dictionary<Participant, Dictionary<Task, Result>> Results;
         
-        public Contest(List<Participant> participants,
-                       List<Task> tasks,
+        public Contest(IEnumerable<Participant> participants,
+                       IEnumerable<Task> tasks,
                        Dictionary<Participant, Dictionary<Task, Result>> results)
         {
             Participants = participants;

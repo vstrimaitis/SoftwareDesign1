@@ -14,8 +14,8 @@ namespace TemplateMethod.Core
         private const int SumColumnWidth = 8;
         private const int PenaltyColumnWidth = 8;
 
-        public IcpcContest(List<Participant> participants,
-                           List<Task> tasks,
+        public IcpcContest(IEnumerable<Participant> participants,
+                           IEnumerable<Task> tasks,
                            Dictionary<Participant, Dictionary<Task, Result>> results)
             : base(participants, tasks, results)
         { }

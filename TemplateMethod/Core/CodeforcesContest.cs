@@ -13,8 +13,8 @@ namespace TemplateMethod.Core
         private const int TaskColumnWidth = 16;
         private const int SumColumnWidth = 8;
 
-        public CodeforcesContest(List<Participant> participants,
-                                 List<Task> tasks,
+        public CodeforcesContest(IEnumerable<Participant> participants,
+                                 IEnumerable<Task> tasks,
                                  Dictionary<Participant, Dictionary<Task, Result>> results)
             : base(participants, tasks, results)
         { }
