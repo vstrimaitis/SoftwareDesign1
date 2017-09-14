@@ -42,9 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Helpers\CodeforcesHelper.cs" />
     <Compile Include="Core\CodeforcesMarkdownContest.cs" />
     <Compile Include="Core\CodeforcesHtmlContest.cs" />
     <Compile Include="Core\Contest.cs" />
+    <Compile Include="Core\Helpers\IcpcHelper.cs" />
     <Compile Include="Core\IcpcHtmlContest.cs" />
     <Compile Include="Core\IcpcMarkdownContest.cs" />
     <Compile Include="Core\ReqA\HtmlTaskEditor.cs" />
