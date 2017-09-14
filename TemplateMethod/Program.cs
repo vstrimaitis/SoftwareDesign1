@@ -15,14 +15,22 @@ namespace TemplateMethod
             TestHelper.PrintTestSuiteHeader(" Template method tests ", '>', '<');
 
             TestHelper.PrintTestHeader("Scoreboard test");
-            TestHelper.RunIcpcScoreboardTest((p, t, r) => new IcpcContest(p, t, r).Scoreboard);
+            TestHelper.RunIcpcScoreboardTest((p, t, r) => new IcpcMarkdownContest(p, t, r).Scoreboard);
             TestHelper.PrintSubtestSeparator();
-            TestHelper.RunCodeforcesScoreboardTest((p, t, r) => new CodeforcesContest(p, t, r).Scoreboard);
+            TestHelper.RunIcpcScoreboardTest((p, t, r) => new IcpcHtmlContest(p, t, r).Scoreboard);
+            TestHelper.PrintSubtestSeparator();
+            TestHelper.RunCodeforcesScoreboardTest((p, t, r) => new CodeforcesMarkdownContest(p, t, r).Scoreboard);
+            TestHelper.PrintSubtestSeparator();
+            TestHelper.RunCodeforcesScoreboardTest((p, t, r) => new CodeforcesHtmlContest(p, t, r).Scoreboard);
             //======================================================================================================================
             TestHelper.PrintTestHeader("Contest task rendering test");
-            TestHelper.RunIcpcTaskRenderingTest((p, t, r) => new IcpcContest(p, t, r).RenderedTasks);
+            TestHelper.RunIcpcTaskRenderingTest((p, t, r) => new IcpcMarkdownContest(p, t, r).RenderedTasks);
             TestHelper.PrintSubtestSeparator();
-            TestHelper.RunCodeforcesTaskRenderingTest((p, t, r) => new CodeforcesContest(p, t, r).RenderedTasks);
+            TestHelper.RunIcpcTaskRenderingTest((p, t, r) => new IcpcHtmlContest(p, t, r).RenderedTasks);
+            TestHelper.PrintSubtestSeparator();
+            TestHelper.RunCodeforcesTaskRenderingTest((p, t, r) => new CodeforcesMarkdownContest(p, t, r).RenderedTasks);
+            TestHelper.PrintSubtestSeparator();
+            TestHelper.RunCodeforcesTaskRenderingTest((p, t, r) => new CodeforcesHtmlContest(p, t, r).RenderedTasks);
             //======================================================================================================================
             TestHelper.PrintTestHeader("Task editor test");
             Task oldTask = new Task("Old task", "This is the old, unedited task", 1500);

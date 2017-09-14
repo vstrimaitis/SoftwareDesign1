@@ -6,14 +6,14 @@ using System.Linq;
 
 namespace TemplateMethod.Core
 {
-    public class CodeforcesContest : Contest
+    public class CodeforcesMarkdownContest : Contest
     {
         private const int ScorePenaltyPerWrongSubmission = 50;
         private const int UserColumnWidth = 8;
         private const int TaskColumnWidth = 16;
         private const int SumColumnWidth = 8;
 
-        public CodeforcesContest(IEnumerable<Participant> participants,
+        public CodeforcesMarkdownContest(IEnumerable<Participant> participants,
                                  IEnumerable<Task> tasks,
                                  Dictionary<Participant, Dictionary<Task, Result>> results)
             : base(participants, tasks, results)
@@ -65,12 +65,12 @@ namespace TemplateMethod.Core
 
         protected override string RenderTaskBody(Task t)
         {
-            return $"<p>Maximum score: <b>{t.MaxScore}</b></p>\n<p>{t.Description}</p>";
+            return $"> Maximum score: {t.MaxScore} points\n> {t.Description}";
         }
 
         protected override string RenderTaskHeader(Task t)
         {
-            return $"<h1>{t.Name}</h1>";
+            return $"# {t.Name}";
         }
 
         private double CalculateTaskScore(Task task, Result result)

@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace TemplateMethod.Core
 {
-    public class IcpcContest : Contest
+    public class IcpcHtmlContest : Contest
     {
         private const int TimePenaltyPerSubmission = 20; // Number of minutes of penalty per wrong submission
         private const int UserColumnWidth = 8;
@@ -14,7 +14,7 @@ namespace TemplateMethod.Core
         private const int SumColumnWidth = 8;
         private const int PenaltyColumnWidth = 8;
 
-        public IcpcContest(IEnumerable<Participant> participants,
+        public IcpcHtmlContest(IEnumerable<Participant> participants,
                            IEnumerable<Task> tasks,
                            Dictionary<Participant, Dictionary<Task, Result>> results)
             : base(participants, tasks, results)
@@ -86,12 +86,12 @@ namespace TemplateMethod.Core
 
         protected override string RenderTaskBody(Task t)
         {
-            return $"> Maximum score: {t.MaxScore} points\n> {t.Description}";
+            return $"<p>Maximum score: <b>{t.MaxScore}</b></p>\n<p>{t.Description}</p>";
         }
 
         protected override string RenderTaskHeader(Task t)
         {
-            return $"# {t.Name}";
+            return $"<h1>{t.Name}</h1>";
         }
     }
 }
